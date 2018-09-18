@@ -1,5 +1,5 @@
 export ROOT=$(realpath $(dir $(firstword $(MAKEFILE_LIST))))
-export APPNAME=gofmt
+export APPNAME=goftp
 export COMPANY_DOMAIN=mirzakhany
 export SRC_PATH=$(COMPANY_DOMAIN)/$(APPNAME)
 export BIN=$(ROOT)/bin
@@ -10,7 +10,7 @@ export GOBIN?=$(BIN)
 export LINTER_BIN=$(shell which gometalinter)
 export GO=$(shell which go)
 export GIT=$(shell which git)
-export GOPATH=$(abspath $(ROOT)/../../..)
+export GOPATH=$(abspath $(ROOT)/../../../..)
 export LONG_HASH?=$(shell git log -n1 --pretty="format:%H" | cat)
 export SHORT_HASH?=$(shell git log -n1 --pretty="format:%h"| cat)
 export COMMIT_DATE?=$(shell git log -n1 --date="format:%D-%H-%I-%S" --pretty="format:%cd"| sed -e "s/\//-/g")
