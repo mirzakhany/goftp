@@ -17,7 +17,7 @@ export COMMIT_DATE?=$(shell git log -n1 --date="format:%D-%H-%I-%S" --pretty="fo
 export IMP_DATE=$(shell date +%Y%m%d)
 export COMMIT_COUNT?=$(shell git rev-list HEAD --count| cat)
 export BUILD_DATE=$(shell date "+%D/%H/%I/%S"| sed -e "s/\//-/g")
-export FLAGS="-X $(SRC_PATH)/commands/version.hash=$(LONG_HASH) -X $(SRC_PATH)/commands/version.short=$(SHORT_HASH) -X $(SRC_PATH)/commands/version.date=$(COMMIT_DATE) -X $(SRC_PATH)/commands/version.count=$(COMMIT_COUNT) -X $(SRC_PATH)/commands/version.build=$(BUILD_DATE)"
+export FLAGS="-X $(SRC_PATH)/pkg/version.hash=$(LONG_HASH) -X $(SRC_PATH)/pkg/version.short=$(SHORT_HASH) -X $(SRC_PATH)/pkg/version.date=$(COMMIT_DATE) -X $(SRC_PATH)/pkg/version.count=$(COMMIT_COUNT) -X $(SRC_PATH)/pkg/version.build=$(BUILD_DATE)"
 export LDARG=-ldflags $(FLAGS)
 export BUILD=cd $(ROOT) && $(GO) install -v $(LDARG) -tags=jsoniter
 
@@ -34,7 +34,9 @@ export LINTER=$(LINTER_BIN)
 export LINTERCMD=$(LINTER) -e ".*.gen.go" -e ".*_test.go" -e "$(COMPANY_DOMAIN)/$(APP_NAME)/vendor/.*" --cyclo-over=19  --sort=path --disable-all --line-length=120 --deadline=100s --enable=structcheck --enable=deadcode --enable=gocyclo --enable=ineffassign --enable=golint --enable=goimports --enable=errcheck --enable=varcheck --enable=goconst --enable=megacheck --enable=misspell
 
 lint: $(LINTER)
-	$(LINTERCMD) $(ROOT)/commands/...
+	$(LINTERCMD) $(ROOT)/cmd/...
+	$(LINTERCMD) $(ROOT)/internal/...
+	$(LINTERCMD) $(ROOT)/pkg/...
 
 metalinter_install:
 	$(GO) get -v github.com/alecthomas/gometalinter
