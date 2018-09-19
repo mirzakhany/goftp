@@ -33,7 +33,7 @@ func servCmdFunc(cmd *cobra.Command, args []string) {
 	}
 
 	http.Handle("/", handleAuth(http.FileServer(http.Dir(directory))))
-	log.Printf("Serving %s on HTTP port: %d\n", directory, port)
+	log.Printf("Serving %s on : %s:%d\n", directory, address, port)
 	log.Fatal(http.ListenAndServe(addr, nil))
 }
 
