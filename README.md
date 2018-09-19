@@ -3,6 +3,13 @@
 A Very Simple file sharing tools with golang, based on memory of ```python -m SimpleHTTPServer``` but
 very faster and multi thread with simple auth support
 
+## Simple install with curl on linux
+
+    curl -L https://github.com/mirzakhany/goftp/releases/download/v0.1/goftp_linux -o goftp
+    chmod +x goftp
+    sudo cp goftp /usr/local/bin
+
+
 ## Build from source
 
     git clone githup.com/mirzakhany/goftp
