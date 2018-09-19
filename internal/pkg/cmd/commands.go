@@ -9,12 +9,13 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "goFtp",
+	Use:   "goftp",
 	Short: "goFtp is a fast in place ftp server",
-	Long: `A fast Ftp server to share a directory fast
-                with a memory from python -m SimpleHTTPServer
-				But this is a multi thread and very fast
-                Complete documentation is available at http://github.com/mirzakhany/goftp`,
+	Long: `A fast Ftp server to share a directory,
+with a memory from python -m SimpleHTTPServer
+But this is a multi thread and very fast
+Complete documentation is available at http://github.com/mirzakhany/goftp`,
+
 	Run: func(cmd *cobra.Command, args []string) {
 		// Do Stuff Here
 	},
