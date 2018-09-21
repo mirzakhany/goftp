@@ -5,7 +5,7 @@ very faster and multi thread with simple auth support
 
 ## Simple install with curl on linux
 
-    curl -L https://github.com/mirzakhany/goftp/releases/download/v0.1/goftp_linux -o goftp
+    curl -L https://github.com/mirzakhany/goftp/releases/download/v0.2/goftp_linux -o goftp
     chmod +x goftp
     sudo cp goftp /usr/local/bin
 
