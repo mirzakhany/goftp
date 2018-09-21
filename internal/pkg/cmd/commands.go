@@ -17,7 +17,7 @@ But this is a multi thread and very fast
 Complete documentation is available at http://github.com/mirzakhany/goftp`,
 
 	Run: func(cmd *cobra.Command, args []string) {
-		// Do Stuff Here
+		cmd.Help()
 	},
 }
 
