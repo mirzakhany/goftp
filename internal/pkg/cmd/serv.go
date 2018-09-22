@@ -39,15 +39,17 @@ func servCmdFunc(cmd *cobra.Command, args []string) {
 
 func handleAuth(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("WWW-Authenticate", `Basic realm="Restricted"`)
-		u, p, authOK := r.BasicAuth()
-		if authOK == false {
-			http.Error(w, "Not authorized", 401)
-			return
-		}
-		if u != username || p != password {
-			http.Error(w, "Not authorized", 401)
-			return
+		if username != "" && password != "" {
+			w.Header().Set("WWW-Authenticate", `Basic realm="Restricted"`)
+			u, p, authOK := r.BasicAuth()
+			if authOK == false {
+				http.Error(w, "Not authorized", 401)
+				return
+			}
+			if u != username || p != password {
+				http.Error(w, "Not authorized", 401)
+				return
+			}
 		}
 		next.ServeHTTP(w, r)
 	})
